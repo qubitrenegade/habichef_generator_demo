@@ -5,9 +5,12 @@
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
 extend HabiChefGenerator::HabiChefHelpers
+puts "USER: #{ENV['USER']}"
 
 # root dir
-directory cookbook_dir
+directory cookbook_dir do
+  user ENV['USER']
+end
 # rest of dirs
 %w(habitat policyfiles).each do |dir|
   directory File.join cookbook_dir, dir
@@ -23,6 +26,8 @@ end
   template File.join cookbook_dir, name do
     helpers HabiChefGenerator::HabiChefHelpers
     source "#{name}.erb"
+    user ENV['USER']
+    group ENV['USER']
     action :create_if_missing
   end
 end
