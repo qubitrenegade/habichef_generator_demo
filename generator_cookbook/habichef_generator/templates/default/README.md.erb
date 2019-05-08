@@ -1,0 +1,38 @@
+# <%= cookbook_name %>
+
+## Usage
+
+This is a HabiChef repo.  It's supposed to be run as a Habitat service.
+
+### Usage specifics
+
+You do something?
+
+Maybe create a /hab/user/<%= cookbook_name %>/config/user.toml file with your configs?
+
+```toml
+# /hab/user/<%= cookbook_name %>/config/user.toml example
+[attributes]
+  [attributes.ntp]
+    servers = ["pool.ntp.org"]
+```
+
+This will set `normal['ntp']['servers'] = ['pool.ntp.org']`.
+
+## Requirements
+
+### Building:
+
+* [Habitat](https://www.habitat.sh/)
+
+### Testing:
+
+* [ChefDK](https://downloads.chef.io/chefdk) / [Chef Workstation](https://downloads.chef.io/chef-workstation/0.2.53)
+** [Test Kitchen](https://kitchen.ci/) (included in ChefDK/ChefWKS)
+** [InSpec](https://www.inspec.io/) (included in ChefDK/ChefWKS)
+* [`kitchen-docker`](https://github.com/test-kitchen/kitchen-docker)
+* [`kitchen-habitat`](https://github.com/test-kitchen/kitchen-habitat)
+
+Once ChefDK/ChefWKS is installed, install requsite gems with `chef gem install kitchen-docker kitchen-habitat`
+
+
